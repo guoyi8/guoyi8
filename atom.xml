@@ -4,7 +4,7 @@
   <subtitle><![CDATA[NewBorn]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://MissChen.cc/"/>
-  <updated>2015-09-16T17:35:22.073Z</updated>
+  <updated>2015-09-18T17:05:18.386Z</updated>
   <id>http://MissChen.cc/</id>
   
   <author>
@@ -13,6 +13,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[随笔]]></title>
+    <link href="http://MissChen.cc/2015/09/19/2015_09_19_1/"/>
+    <id>http://MissChen.cc/2015/09/19/2015_09_19_1/</id>
+    <published>2015-09-18T17:00:00.000Z</published>
+    <updated>2015-09-18T17:05:18.386Z</updated>
+    <content type="html"><![CDATA[<embed src="http://player.yinyuetai.com/video/player/2333708/v_0.swf" quality="high" width="480" height="334" align="middle" allowscriptaccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash">
+
+
+<hr>
+<blockquote>
+<p>謝謝妳，陈安琪<br>出現在我的青春里，謝謝</p>
+</blockquote>
+<a id="more"></a>
+<p>我发现我已经慢慢不知道，该怎么同你说话了</p>
+<hr>
+<p>无所谓了，反正也并不在乎被人看到</p>
+<p>陈安琪同学，你说我们还能再回到最初安静认真彼此当朋友的时候了么</p>
+<blockquote>
+<p>謝謝妳</p>
+<p>祝願妳能抓住你所一直期待的一切</p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<embed src="http://player.yinyuetai.com/video/player/2333708/v_0.swf" quality="high" width="480" height="334" align="middle"  allowScriptAccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash"></embed>
+
+
+<hr>
+<blockquote>
+<p>謝謝妳，陈安琪<br>出現在我的青春里，謝謝</p>
+</blockquote>]]>
+    
+    </summary>
+    
+      <category term="心情随笔" scheme="http://MissChen.cc/tags/%E5%BF%83%E6%83%85%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="視頻" scheme="http://MissChen.cc/tags/%E8%A6%96%E9%A0%BB/"/>
+    
+      <category term="心情随笔" scheme="http://MissChen.cc/categories/%E5%BF%83%E6%83%85%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[First Page]]></title>
