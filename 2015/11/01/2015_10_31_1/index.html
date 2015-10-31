@@ -1,0 +1,715 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="雪梨撸阿撸" />
+
+
+
+  <meta name="keywords" content="Boost,OpenCV,Python,dlib," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="陈小喵的小窝" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="【原创】转载请保留出处:www.MissChen.com 陈小喵的小窝
+引言
+
+  项目起源于github上一个使用dlib、openCV，以Python语言完成的换脸程序  Switching Eds: Face swapping with Python, dlib, and OpenCV   目前网上提供的此类解决方案大多为Python2.7 + OpenCV 2.2 ，在此记录博主的编译过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3.4.3 + OpenCV3.0.0 + dlib-18.18  on windows 10 编译">
+<meta property="og:url" content="http://MissChen.cc/2015/11/01/2015_10_31_1/index.html">
+<meta property="og:site_name" content="陈小喵的小窝">
+<meta property="og:description" content="【原创】转载请保留出处:www.MissChen.com 陈小喵的小窝
+引言
+
+  项目起源于github上一个使用dlib、openCV，以Python语言完成的换脸程序  Switching Eds: Face swapping with Python, dlib, and OpenCV   目前网上提供的此类解决方案大多为Python2.7 + OpenCV 2.2 ，在此记录博主的编译过程">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/6ed58b8agw1exkt9mtj5bj20il0hjjv6.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/6ed58b8agw1exkttmp7fuj20gf03s3za.jpg">
+<meta property="og:updated_time" content="2015-10-31T18:10:03.478Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python3.4.3 + OpenCV3.0.0 + dlib-18.18  on windows 10 编译">
+<meta name="twitter:description" content="【原创】转载请保留出处:www.MissChen.com 陈小喵的小窝
+引言
+
+  项目起源于github上一个使用dlib、openCV，以Python语言完成的换脸程序  Switching Eds: Face swapping with Python, dlib, and OpenCV   目前网上提供的此类解决方案大多为Python2.7 + OpenCV 2.2 ，在此记录博主的编译过程">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> python3.4.3 + OpenCV3.0.0 + dlib-18.18  on windows 10 编译 | 陈小喵的小窝 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?495460c2484a60ad804b1546b92351e7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">陈小喵的小窝</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            <i class="menu-item-icon icon-next-guestbook"></i> <br />
+            留言
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '5aS3qx7nByHA9RsUtt2L','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              python3.4.3 + OpenCV3.0.0 + dlib-18.18  on windows 10 编译
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-01T01:00:00+08:00" content="2015-11-01">
+            2015-11-01
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/Python/" itemprop="url" rel="index">
+                  <span itemprop="name">Python</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/01/2015_10_31_1/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/2015_10_31_1/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>【原创】转载请保留出处:www.MissChen.com 陈小喵的小窝</p>
+<h2 id="introduction">引言</h2>
+
+<p>  项目起源于github上一个使用dlib、openCV，以Python语言完成的换脸程序<br>  <strong><a href="http://matthewearl.github.io/2015/07/28/switching-eds-with-python/" target="_blank" rel="external">Switching Eds: Face swapping with Python, dlib, and OpenCV</a></strong><br>   目前网上提供的此类解决方案大多为Python2.7 + OpenCV 2.2 ，在此记录博主的编译过程，此前并未过多涉猎Python，并且此文为事后整理，如描述有误或疏漏，请大家见谅。</p>
+<a id="more"></a>
+<ul>
+<li><a href="#introduction">引言</a></li>
+<li><a href="#download&amp;install">下载&amp;安装</a></li>
+<li><a href="#compile">编译</a><ul>
+<li><a href="#OpenCV">OpenCV编译</a></li>
+<li><a href="#Boost">Boost编译</a></li>
+<li><a href="#dlib">dlib编译</a>    </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="download&install">下载&amp;安装</h2><br>   1、从<a href="https://www.python.org/downloads/" target="_blank" rel="external">Python官网</a>下载安装<a href="https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi" target="_blank" rel="external">Python3.4.3</a><br>   正常安装即可，注意选择添加环境变量那个选项，不赘述，正常安装即可。<br>   2、从<a href="http://opencv.org" target="_blank" rel="external">OpenCV官网</a>下载目前最新版的<a href="http://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.0.0/opencv-3.0.0.exe/download" target="_blank" rel="external">OpenCV3.0.0</a>，国内访问OpenCV有时候会非常卡，可以尝试<a href="https://github.com/Itseez/opencv/releases" target="_blank" rel="external">github地址</a>或其他方式下载，下载完毕后打开选择目录解压即可。<br>   3、下载安装<a href="http://sourceforge.net/projects/numpy/files/NumPy/1.10.1/numpy-1.10.1-win32-superpack-python3.4.exe/download" target="_blank" rel="external">NumPy</a>、<a href="http://sourceforge.net/projects/scipy/files/scipy/0.16.1/scipy-0.16.1-win32-superpack-python3.4.exe/download" target="_blank" rel="external">SciPy</a><br>   请直接选择链接下载，注明为Python3.4大版本。直接安装，会默认自动寻找Python路径。<br>   4、下载<a href="https://cmake.org/download/" target="_blank" rel="external">CMake工具</a><br>   此工具直接下载ZIP版本解压即可，无需安装，博主使用的目前最新版本3.4.0-rc2<br><br><h2 id="compile">编译</h2>
+
+<h3 id="OpenCV">OpenCV编译</h3>
+
+<p>   1、打开解压后的 cmake-3.4.0-rc2-win32-x86\bin\下的cmake-gui.exe<br>   2、将openCV解压后的路径，参照图示填入<img src="http://ww4.sinaimg.cn/large/6ed58b8agw1exkt9mtj5bj20il0hjjv6.jpg" alt="">，选择Configure，弹出框中选择VS2012 vc11(博主本机使用的VS2012，请根据实际使用选择)，但不建议使用x64即64位版本。<br>   3、如无错误产生，点击Generate即可生成代码工程<br>   4、用VS2012打开已生成的OpenCV工程，对工程进行Release编译生成即可。<br>   5、将F:\Code\Python\opencv-3.0.0\opencv\build\文件夹下如图所示下面几个文件夹拷贝到个人喜好的OpenCV文件夹下<img src="http://ww1.sinaimg.cn/large/6ed58b8agw1exkttmp7fuj20gf03s3za.jpg" alt="">，并且将此文件夹路径添加到环境变量path下，这即为OpenCV我们目前所需所有文件。在\lib\Release文件夹下找到cv2.pyd文件，拷贝到Python路径Python34\Lib\site-packages\文件夹下。此时可以对OpenCV工程进行清理，节省硬盘空间</p>
+<h3 id="Boost">Boost编译</h3>
+
+<p>   1、在管理员命令行模式下，执行boost_1_59_0\bootstrap.bat，会生成b2.exe，bjam.exe<br>   2、执行bjam.exe，此命令会根据本机编译器环境，生成库文件<br>   3、注意执行下面命令，很重要<br>   <code>b2 -a --with-python address-model=32 toolset=msvc runtime-link=static</code><br>   指定编译Python所需的boost库文件<br>   注意一定统一使用32位，要么可能会产生错误</p>
+<h3 id="dlib">dlib编译</h3>
+
+<p>   博主开始尝试了很久直接使用CMake编译dlib，但始终在Boost_PYTHON_LIBRARY_RELEASE/DEBUG选项上，选择任意一个可能的文件，都最终产生错误编译不过，后来使用命令方式终于成功<br>   1、首先在上述Boost编译时使用的b2.exe那条命令所编译产生文件为基础<br>   2、进入dlib-18.18文件夹下，管理员命令行下执行<br>   <code>python setup.py install --cmake x:\cmake-3.4.0-rc2-win32-x86\bin\cmake.exe</code><br>   –cmake后面为本地cmake.exe路径， 博主此处未补充完整，请根据各自环境填写<br>   3、在F:\Code\Python\dlib-18.18\tools\python\build\Release\文件夹下，将生成好的dlib.pyd文件拷贝到Python路径Python34\Lib\site-packages\文件夹下，即大功告成。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Boost/" rel="tag">#Boost</a>
+          
+            <a href="/tags/OpenCV/" rel="tag">#OpenCV</a>
+          
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/dlib/" rel="tag">#dlib</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/17/2015_09_17_1/" rel="next">Markdown 语法说明 (简体中文版)</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/11/01/2015_10_31_1/"
+                   data-title="python3.4.3 + OpenCV3.0.0 + dlib-18.18  on windows 10 编译" data-url="http://MissChen.cc/2015/11/01/2015_10_31_1/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars3.githubusercontent.com/u/12270166?v=3" alt="Sherrylol" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Sherrylol</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">雪梨撸阿撸</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#download&install"><span class="nav-number">2.</span> <span class="nav-text">下载&安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#compile"><span class="nav-number">3.</span> <span class="nav-text">编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenCV"><span class="nav-number">3.1.</span> <span class="nav-text">OpenCV编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boost"><span class="nav-number">3.2.</span> <span class="nav-text">Boost编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dlib"><span class="nav-number">3.3.</span> <span class="nav-text">dlib编译</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sherrylol</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"sherrylol"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

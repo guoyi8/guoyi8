@@ -4,7 +4,7 @@
   <subtitle><![CDATA[NewBorn]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://MissChen.cc/"/>
-  <updated>2015-09-16T16:53:55.656Z</updated>
+  <updated>2015-10-31T18:10:03.478Z</updated>
   <id>http://MissChen.cc/</id>
   
   <author>
@@ -13,6 +13,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[python3.4.3 + OpenCV3.0.0 + dlib-18.18  on windows 10 编译]]></title>
+    <link href="http://MissChen.cc/2015/11/01/2015_10_31_1/"/>
+    <id>http://MissChen.cc/2015/11/01/2015_10_31_1/</id>
+    <published>2015-10-31T17:00:00.000Z</published>
+    <updated>2015-10-31T18:10:03.478Z</updated>
+    <content type="html"><![CDATA[<p>【原创】转载请保留出处:www.MissChen.com 陈小喵的小窝</p>
+<h2 id="introduction">引言</h2>
+
+<p>  项目起源于github上一个使用dlib、openCV，以Python语言完成的换脸程序<br>  <strong><a href="http://matthewearl.github.io/2015/07/28/switching-eds-with-python/" target="_blank" rel="external">Switching Eds: Face swapping with Python, dlib, and OpenCV</a></strong><br>   目前网上提供的此类解决方案大多为Python2.7 + OpenCV 2.2 ，在此记录博主的编译过程，此前并未过多涉猎Python，并且此文为事后整理，如描述有误或疏漏，请大家见谅。</p>
+<a id="more"></a>
+<ul>
+<li><a href="#introduction">引言</a></li>
+<li><a href="#download&amp;install">下载&amp;安装</a></li>
+<li><a href="#compile">编译</a><ul>
+<li><a href="#OpenCV">OpenCV编译</a></li>
+<li><a href="#Boost">Boost编译</a></li>
+<li><a href="#dlib">dlib编译</a>    </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="download&install">下载&amp;安装</h2><br>   1、从<a href="https://www.python.org/downloads/" target="_blank" rel="external">Python官网</a>下载安装<a href="https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi" target="_blank" rel="external">Python3.4.3</a><br>   正常安装即可，注意选择添加环境变量那个选项，不赘述，正常安装即可。<br>   2、从<a href="http://opencv.org" target="_blank" rel="external">OpenCV官网</a>下载目前最新版的<a href="http://sourceforge.net/projects/opencvlibrary/files/opencv-win/3.0.0/opencv-3.0.0.exe/download" target="_blank" rel="external">OpenCV3.0.0</a>，国内访问OpenCV有时候会非常卡，可以尝试<a href="https://github.com/Itseez/opencv/releases" target="_blank" rel="external">github地址</a>或其他方式下载，下载完毕后打开选择目录解压即可。<br>   3、下载安装<a href="http://sourceforge.net/projects/numpy/files/NumPy/1.10.1/numpy-1.10.1-win32-superpack-python3.4.exe/download" target="_blank" rel="external">NumPy</a>、<a href="http://sourceforge.net/projects/scipy/files/scipy/0.16.1/scipy-0.16.1-win32-superpack-python3.4.exe/download" target="_blank" rel="external">SciPy</a><br>   请直接选择链接下载，注明为Python3.4大版本。直接安装，会默认自动寻找Python路径。<br>   4、下载<a href="https://cmake.org/download/" target="_blank" rel="external">CMake工具</a><br>   此工具直接下载ZIP版本解压即可，无需安装，博主使用的目前最新版本3.4.0-rc2<br><br><h2 id="compile">编译</h2>
+
+<h3 id="OpenCV">OpenCV编译</h3>
+
+<p>   1、打开解压后的 cmake-3.4.0-rc2-win32-x86\bin\下的cmake-gui.exe<br>   2、将openCV解压后的路径，参照图示填入<img src="http://ww4.sinaimg.cn/large/6ed58b8agw1exkt9mtj5bj20il0hjjv6.jpg" alt="">，选择Configure，弹出框中选择VS2012 vc11(博主本机使用的VS2012，请根据实际使用选择)，但不建议使用x64即64位版本。<br>   3、如无错误产生，点击Generate即可生成代码工程<br>   4、用VS2012打开已生成的OpenCV工程，对工程进行Release编译生成即可。<br>   5、将F:\Code\Python\opencv-3.0.0\opencv\build\文件夹下如图所示下面几个文件夹拷贝到个人喜好的OpenCV文件夹下<img src="http://ww1.sinaimg.cn/large/6ed58b8agw1exkttmp7fuj20gf03s3za.jpg" alt="">，并且将此文件夹路径添加到环境变量path下，这即为OpenCV我们目前所需所有文件。在\lib\Release文件夹下找到cv2.pyd文件，拷贝到Python路径Python34\Lib\site-packages\文件夹下。此时可以对OpenCV工程进行清理，节省硬盘空间</p>
+<h3 id="Boost">Boost编译</h3>
+
+<p>   1、在管理员命令行模式下，执行boost_1_59_0\bootstrap.bat，会生成b2.exe，bjam.exe<br>   2、执行bjam.exe，此命令会根据本机编译器环境，生成库文件<br>   3、注意执行下面命令，很重要<br>   <code>b2 -a --with-python address-model=32 toolset=msvc runtime-link=static</code><br>   指定编译Python所需的boost库文件<br>   注意一定统一使用32位，要么可能会产生错误</p>
+<h3 id="dlib">dlib编译</h3>
+
+<p>   博主开始尝试了很久直接使用CMake编译dlib，但始终在Boost_PYTHON_LIBRARY_RELEASE/DEBUG选项上，选择任意一个可能的文件，都最终产生错误编译不过，后来使用命令方式终于成功<br>   1、首先在上述Boost编译时使用的b2.exe那条命令所编译产生文件为基础<br>   2、进入dlib-18.18文件夹下，管理员命令行下执行<br>   <code>python setup.py install --cmake x:\cmake-3.4.0-rc2-win32-x86\bin\cmake.exe</code><br>   –cmake后面为本地cmake.exe路径， 博主此处未补充完整，请根据各自环境填写<br>   3、在F:\Code\Python\dlib-18.18\tools\python\build\Release\文件夹下，将生成好的dlib.pyd文件拷贝到Python路径Python34\Lib\site-packages\文件夹下，即大功告成。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>【原创】转载请保留出处:www.MissChen.com 陈小喵的小窝</p>
+<h2 id="introduction">引言</h2>
+
+<p>  项目起源于github上一个使用dlib、openCV，以Python语言完成的换脸程序<br>  <strong><a href="http://matthewearl.github.io/2015/07/28/switching-eds-with-python/">Switching Eds: Face swapping with Python, dlib, and OpenCV</a></strong><br>   目前网上提供的此类解决方案大多为Python2.7 + OpenCV 2.2 ，在此记录博主的编译过程，此前并未过多涉猎Python，并且此文为事后整理，如描述有误或疏漏，请大家见谅。</p>]]>
+    
+    </summary>
+    
+      <category term="Boost" scheme="http://MissChen.cc/tags/Boost/"/>
+    
+      <category term="OpenCV" scheme="http://MissChen.cc/tags/OpenCV/"/>
+    
+      <category term="Python" scheme="http://MissChen.cc/tags/Python/"/>
+    
+      <category term="dlib" scheme="http://MissChen.cc/tags/dlib/"/>
+    
+      <category term="Python" scheme="http://MissChen.cc/categories/Python/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Markdown 语法说明 (简体中文版)]]></title>
