@@ -4,7 +4,7 @@
   <subtitle><![CDATA[NewBorn]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://MissChen.cc/"/>
-  <updated>2015-10-31T18:10:58.240Z</updated>
+  <updated>2015-10-31T18:12:06.414Z</updated>
   <id>http://MissChen.cc/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[python3.4.3 + OpenCV3.0.0 + dlib-18.18  on windows 10 编译]]></title>
+    <title><![CDATA[python3.4.3 + OpenCV3.0.0 + dlib-18.18  on windows编译]]></title>
     <link href="http://MissChen.cc/2015/11/01/2015_10_31_1/"/>
     <id>http://MissChen.cc/2015/11/01/2015_10_31_1/</id>
     <published>2015-10-31T17:00:00.000Z</published>
-    <updated>2015-10-31T18:10:58.240Z</updated>
+    <updated>2015-10-31T18:12:06.414Z</updated>
     <content type="html"><![CDATA[<p>【原创】转载请保留出处:www.MissChen.cc 陈小喵的小窝</p>
 <h2 id="introduction">引言</h2>
 
