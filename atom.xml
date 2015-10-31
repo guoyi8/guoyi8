@@ -4,7 +4,7 @@
   <subtitle><![CDATA[NewBorn]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://MissChen.cc/"/>
-  <updated>2015-10-31T18:10:03.478Z</updated>
+  <updated>2015-10-31T18:10:58.240Z</updated>
   <id>http://MissChen.cc/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://MissChen.cc/2015/11/01/2015_10_31_1/"/>
     <id>http://MissChen.cc/2015/11/01/2015_10_31_1/</id>
     <published>2015-10-31T17:00:00.000Z</published>
-    <updated>2015-10-31T18:10:03.478Z</updated>
-    <content type="html"><![CDATA[<p>【原创】转载请保留出处:www.MissChen.com 陈小喵的小窝</p>
+    <updated>2015-10-31T18:10:58.240Z</updated>
+    <content type="html"><![CDATA[<p>【原创】转载请保留出处:www.MissChen.cc 陈小喵的小窝</p>
 <h2 id="introduction">引言</h2>
 
 <p>  项目起源于github上一个使用dlib、openCV，以Python语言完成的换脸程序<br>  <strong><a href="http://matthewearl.github.io/2015/07/28/switching-eds-with-python/" target="_blank" rel="external">Switching Eds: Face swapping with Python, dlib, and OpenCV</a></strong><br>   目前网上提供的此类解决方案大多为Python2.7 + OpenCV 2.2 ，在此记录博主的编译过程，此前并未过多涉猎Python，并且此文为事后整理，如描述有误或疏漏，请大家见谅。</p>
@@ -49,7 +49,7 @@
 <p>   博主开始尝试了很久直接使用CMake编译dlib，但始终在Boost_PYTHON_LIBRARY_RELEASE/DEBUG选项上，选择任意一个可能的文件，都最终产生错误编译不过，后来使用命令方式终于成功<br>   1、首先在上述Boost编译时使用的b2.exe那条命令所编译产生文件为基础<br>   2、进入dlib-18.18文件夹下，管理员命令行下执行<br>   <code>python setup.py install --cmake x:\cmake-3.4.0-rc2-win32-x86\bin\cmake.exe</code><br>   –cmake后面为本地cmake.exe路径， 博主此处未补充完整，请根据各自环境填写<br>   3、在F:\Code\Python\dlib-18.18\tools\python\build\Release\文件夹下，将生成好的dlib.pyd文件拷贝到Python路径Python34\Lib\site-packages\文件夹下，即大功告成。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>【原创】转载请保留出处:www.MissChen.com 陈小喵的小窝</p>
+    <![CDATA[<p>【原创】转载请保留出处:www.MissChen.cc 陈小喵的小窝</p>
 <h2 id="introduction">引言</h2>
 
 <p>  项目起源于github上一个使用dlib、openCV，以Python语言完成的换脸程序<br>  <strong><a href="http://matthewearl.github.io/2015/07/28/switching-eds-with-python/">Switching Eds: Face swapping with Python, dlib, and OpenCV</a></strong><br>   目前网上提供的此类解决方案大多为Python2.7 + OpenCV 2.2 ，在此记录博主的编译过程，此前并未过多涉猎Python，并且此文为事后整理，如描述有误或疏漏，请大家见谅。</p>]]>
